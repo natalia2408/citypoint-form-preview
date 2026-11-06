@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
+  <title>Citypoint — предпросмотр CRM-формы</title>
+  <link rel="stylesheet" href="./citypoint-bitrix66.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #191a1e; color: #fafafa; font: 16px/1.5 'Inter', system-ui, sans-serif; }
+    main { max-width: 820px; margin: 0 auto; padding: 32px 20px 60px; }
+    h1 { font-size: 22px; margin: 0 0 8px; }
+    .preview-note { color: #a6a6a6; font-size: 14px; margin: 0 0 24px; }
+    #load-status { color: #a6a6a6; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Предпросмотр формы Citypoint</h1>
+    <p class="preview-note">Живая форма Битрикс24 №66 с новым оформлением. Отправка создаёт настоящую заявку в CRM.</p>
+    <p id="load-status" role="status">Загружается форма Битрикс24…</p>
+    <div id="citypoint-crm66">
+      <script data-b24-form="inline/66/m2cbxw" data-b24-form-telemetry-sign="v1:66:site.229ba4a5f85046d69202c03adfa2f557113398c34c4406b3d5891d737294d8d8" data-skip-moving="true">
+        (function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b7548575/crm/form/loader_66.js');
+      </script>
+    </div>
+  </main>
+  <script>
+    const host = document.getElementById('citypoint-crm66');
+    const status = document.getElementById('load-status');
+    const observer = new MutationObserver(() => {
+      if (host.querySelector('.b24-form-wrapper')) {
+        status.hidden = true;
+        observer.disconnect();
+      }
+    });
+    observer.observe(host, {childList: true, subtree: true});
+    setTimeout(() => {
+      if (!status.hidden) status.textContent = 'Ожидаем загрузку Битрикс24. Если форма не появилась, проверьте подключение к интернету и блокировщики.';
+    }, 20000);
+  </script>
+</body>
+</html>
